@@ -126,7 +126,23 @@ export default function Login({ onLogin }: LoginFormProps) {
               // You can redirect to a different page for teachers
               window.location.href = '/teacher';
           });
-      } else {
+          
+      } 
+      
+      else if (userRole === "admin") {
+        // Welcome teacher and show appropriate message
+        Swal.fire({
+            title: 'Login Successful',
+            text: `Welcome admin, ${formData.username}!`,
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#10B981',
+        }).then(() => {
+            // You can redirect to a different page for teachers
+            window.location.href = '/admin';
+        });
+      }
+        else {
           // If userRole is something else (optional default case)
           Swal.fire({
               title: 'Login Successful',
